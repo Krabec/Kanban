@@ -1,0 +1,11 @@
+main {
+	margin-bottom: 32px;
+	flex: 1 0 auto;
+}
+
+.blocks {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content:space-evenly;
+}

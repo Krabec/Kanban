@@ -39,7 +39,7 @@ export const dataBase = [
 			},
 			{
 				id: '10006',
-				name: 'Shop page – performance issues',
+				name: 'Shop page – performance issues 2',
 				description: 'Fix all the bugs'
 			}
 
@@ -75,5 +75,5 @@ export const dataBase = [
 		   }
 		]
 		},
-	// и так далее
- ]
+ ];
+

@@ -1,31 +1,52 @@
 import React from "react";
 import { useState } from "react";
 import { dataBase } from "../../dataBase"
-import { useEffect } from 'react';
-import Button from "./button";
+import AddCard from "./AddCard";
 import Block from "./block";
 import "./content.css";
+import { LocalClear } from "./Button/LocalClear";
 
 function Content() {
 
-	const [data, setDataBase] = useState(dataBase)
+	const [data, setDataBase] = useState(() => {
+		if (localStorage.dataBase) {
+			const localStorageData = JSON.parse(localStorage.dataBase)
+			console.log("монтирование")
+			console.log(localStorageData)
+			return (localStorageData)
+		} else return (dataBase)
+	})
 
-	function addDataBase(title, id) {
-		let newData = data;
+	function addDataBase(title, name) {
+
+		let newData = data.slice();
 		let element;
-		newData.forEach((elem, i) =>{
-			if(title === elem.title) {
-				element = newData[i].issues
-				element.forEach((el, j) => {
-					if(el.id === id) {
-						newData[i + 1].issues.push(newData[i].issues[j]);
-						delete newData[i].issues[j];
-					}
-				})
-			}
 
-		})
-		setDataBase(newData)
+		if(title !== 'Backlog') {
+			newData.forEach((elem, i) =>{
+				if(title === elem.title) {
+					element = newData[i - 1].issues
+					element.forEach((el, j) => {
+							if(el.name === name) {
+								newData[i].issues.push(newData[i - 1].issues[j]);
+								newData[i - 1].issues.splice(j, 1);
+								setDataBase(newData)
+								localStorage.setItem('dataBase', JSON.stringify(newData))
+							}						
+					})
+				}
+	
+			})
+		} else {
+			newData[0].issues.push({
+				id: String(Math.floor(1000000 * Math.random())),
+				name: name,
+				description: ''
+			})
+			setDataBase(newData)
+			localStorage.setItem('dataBase', JSON.stringify(newData))
+			
+		}
 	}
 
 	return(
@@ -35,12 +56,13 @@ function Content() {
 					data.map((elems) =>{
 						return (
 							<div className="block">
-								<Block data = {data} elems = {elems}/>
-								<Button title={elems.title} data = {data} addDataBase={addDataBase}/>
+								<Block elems = {elems}/>
+								<AddCard title={elems.title} data = {data} addDataBase={addDataBase}/>
 							</div>
 							
 						)
 				})}
+				<LocalClear/>
 			</div>
 		</main>
 		

@@ -1,24 +1,10 @@
 import React from "react";
 import './block.css';
-import { useEffect } from 'react';
 import { useState } from "react";
-//import Button from "./button";
 
+function Block({ elems }) {
 
-function Block({data, elems }) {
-
-	const [dataBase] = useState(data)
-	const [elemsBase, setElemsBase] = useState(elems)
-
-	useEffect(() => {
-		dataBase.forEach((elem) =>{
-			if(elem.title === elems.title) {
-				setElemsBase(elem)
-			}
-		})
-	}, [elems.title, dataBase]);
-
-	
+	const [elemsBase] = useState(elems)
 
 	return(
 		<>
@@ -26,7 +12,7 @@ function Block({data, elems }) {
 			<ul>
 				{
 					elemsBase.issues.map((elem) => {
-						return <li><a href="#" id = {elem.id}>{elem.name}</a></li>
+						return <li key={elem.id}><a href="#" id = {elem.id}>{elem.name}</a></li>
 					})
 				}
 			</ul>

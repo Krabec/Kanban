@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom"
 import React from "react";
 import './block.css';
 import { useState } from "react";
 
-function Block({ elems }) {
+function Block({ elems}) {
 
 	const [elemsBase] = useState(elems)
 
@@ -12,7 +13,7 @@ function Block({ elems }) {
 			<ul>
 				{
 					elemsBase.issues.map((elem) => {
-						return <li key={elem.id}><a href="#" id = {elem.id}>{elem.name}</a></li>
+						return <li key={elem.id}><Link to={"/tasks/" + elem.id}>{elem.name}</Link></li>
 					})
 				}
 			</ul>

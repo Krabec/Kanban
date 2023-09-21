@@ -5,6 +5,8 @@ import AddCard from "./AddCard";
 import Block from "./block";
 import "./content.css";
 import { LocalClear } from "./Button/LocalClear";
+import TaskWindow from "./TaskWindow";
+import { Route, Routes } from "react-router-dom"
 
 function Content() {
 
@@ -49,21 +51,56 @@ function Content() {
 		}
 	}
 
+	function handleClickUpdate (e) {
+		let newData = data.slice();
+
+		const suffering = e.target.value.split("{/d/")
+        const id = suffering[1]
+		const description = suffering[0]
+/* 		console.log(e.target.value)
+		console.log(id) */
+
+		newData.forEach((elem, i) =>{
+				elem.issues.forEach((el, j) => {
+						if(el.id === id) {
+							newData[i].issues[j].description = description
+							setDataBase(newData)
+							localStorage.setItem('dataBase', JSON.stringify(newData))
+						}						
+				})
+			
+
+		})
+    }
+
 	return(
-		<main>
-			<div className="blocks">
-				{
-					data.map((elems) =>{
-						return (
-							<div className="block">
-								<Block elems = {elems}/>
-								<AddCard title={elems.title} data = {data} addDataBase={addDataBase}/>
-							</div>
-							
-						)
+		<main> 
+			<Routes>
+				<Route path="/" element={
+					<div className="blocks">
+						{
+							data.map((elems) =>{
+								return (
+									<div className="block">
+										<Block elems = {elems} />
+										<AddCard title={elems.title} data = {data} addDataBase={addDataBase}/>
+									</div>
+									
+								)
+						})}
+						<LocalClear/>
+					</div>
+				} />
+				{data.map((elems) =>{
+					return (
+						elems.issues.map((elem) => {
+							console.log("/" + elem.id)
+							return (<Route path={"/tasks/" + elem.id} element={ <TaskWindow data={elem} handleClickUpdate={handleClickUpdate}/> }/>)
+						})
+					)	
 				})}
-				<LocalClear/>
-			</div>
+				
+			</Routes>			
 		</main>
 		
 	)

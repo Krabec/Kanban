@@ -1,0 +1,24 @@
+.task-window {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    min-width: 98%;
+    min-height: 100%;
+    margin: 0 15px 0 15px;
+    border-radius: 7px;
+}
+
+.info-task {
+    margin: 30px;
+}
+
+.link {
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.info-task input {
+    border: none;
+}

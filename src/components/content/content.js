@@ -8,7 +8,7 @@ import { LocalClear } from "./Button/LocalClear";
 import TaskWindow from "./TaskWindow";
 import { Route, Routes } from "react-router-dom"
 
-function Content() {
+function Content({countTask}) {
 
 	const [data, setDataBase] = useState(() => {
 		if (localStorage.dataBase) {
@@ -18,6 +18,23 @@ function Content() {
 			return (localStorageData)
 		} else return (dataBase)
 	})
+
+	function footerContent () {
+		let activeTask;
+		let finishedtasks;
+
+		data.forEach((elem) =>{
+			if(elem.title === "Backlog") {
+				activeTask = elem.issues.length
+			} if(elem.title === "Finished") {
+				finishedtasks = elem.issues.length
+			}
+		})
+
+		countTask(activeTask, finishedtasks)
+	}
+
+	footerContent()
 
 	function addDataBase(title, name) {
 

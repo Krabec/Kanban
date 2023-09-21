@@ -1,10 +1,10 @@
 import React from "react";
 import './footer.css';
 
-function Footer() {
+function Footer({activeTask, finishedtasks}) {
 	return(
 		<footer>
-			<div>Awesome Kanban Board</div>
+			<div>Active tasks: {activeTask} Finished tasks: {finishedtasks}</div>
 			<div>Profile</div>
 		</footer>
 	)

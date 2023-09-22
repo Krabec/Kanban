@@ -1,0 +1,103 @@
+.add-card {
+	border: none; 
+	outline: none;
+	background-color: #EBECF0;
+	color: #5E6C84;
+	padding: 6px;
+	border-radius: 5px;
+	
+	font-family: Roboto;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 21px;
+	letter-spacing: 0em;
+	text-align: left;
+}
+
+.add-card:hover {
+	background-color: #ffffff;
+
+}
+
+.add-card:active {
+	background-color: #ffffff;
+	transform: scale(0.9);
+}
+
+.submit {
+	width: 102px;
+	height: 29px;
+	border: none;
+	border-radius: 5px;
+	background-color: #0079BF;
+	color: #FFFFFF;
+
+	font-family: Roboto;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 21px;
+	letter-spacing: 0em;
+	text-align: center;
+
+}
+
+.submit:hover {
+	background: linear-gradient(#0079BF, #30b9f0) #0079BF;
+}
+
+.submit:active { 
+	background: linear-gradient(#0079BF, #30b9f0) #0079BF;
+	transform: scale(0.9);
+}
+
+svg {
+	margin-right: 3px;
+}
+
+.close {
+	padding: 5px;
+	border-radius: 5px;
+	text-align: center;
+	background-color: white;
+	border: none;
+}
+
+.close svg {
+	margin-right: 0;
+}
+
+.close:hover {
+	background-color: #EBECF0;
+	
+}
+
+.close:active {
+	transform: scale(0.9);
+}
+
+select, input {
+	border-radius: 5px;
+	border: none;
+	width: 100%;
+	
+	margin-bottom: 15px;
+}
+
+select {
+	width: 100%;
+	height: 29px;
+}
+
+select::-ms-expand {
+	border-radius: 5px;
+}
+
+input {
+	width: 94%;
+	padding: 7px;
+	height: 22px;
+}
+
+option {
+	border-radius: 5px;
+}

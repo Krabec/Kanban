@@ -2,6 +2,7 @@ import './taskWindow.css';
 import { Link } from "react-router-dom"
 import { useState } from 'react';
 import { ButtonUpdate } from './Button/ButtonUpdate';
+import { ButtonClose } from './Button/ButtonClose';
 
 function TaskWindow({ data, handleClickUpdate }) {
 
@@ -33,12 +34,11 @@ function TaskWindow({ data, handleClickUpdate }) {
 		<div className='task-window'>
             <div className='info-task'>
                 <h2>{data.name}</h2>
-                <input type="text" value={description} onChange={(e) => handleChangeInput(e)}/>
-                <br/>
+                <textarea type="text" value={description} onChange={(e) => handleChangeInput(e)}/>
                 {isValide === true && (<ButtonUpdate description = {description} dataId = {data.id}  handleClickUpdates={handleClickUpdates}/>)}
             </div>
             <div className='link'>
-                <Link to="/">Х</Link>
+                <Link to="/"><ButtonClose/></Link>
             </div>
             
 		</div>

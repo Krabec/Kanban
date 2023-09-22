@@ -4,7 +4,6 @@ import { dataBase } from "../../dataBase"
 import AddCard from "./AddCard";
 import Block from "./block";
 import "./content.css";
-import { LocalClear } from "./Button/LocalClear";
 import TaskWindow from "./TaskWindow";
 import { Route, Routes } from "react-router-dom"
 
@@ -13,8 +12,6 @@ function Content({countTask}) {
 	const [data, setDataBase] = useState(() => {
 		if (localStorage.dataBase) {
 			const localStorageData = JSON.parse(localStorage.dataBase)
-			console.log("монтирование")
-			console.log(localStorageData)
 			return (localStorageData)
 		} else return (dataBase)
 	})
@@ -96,22 +93,25 @@ function Content({countTask}) {
 				<Route path="/" element={
 					<div className="blocks">
 						{
-							data.map((elems) =>{
+							data.map((elems,i) =>{
 								return (
 									<div className="block">
 										<Block elems = {elems} />
-										<AddCard title={elems.title} data = {data} addDataBase={addDataBase}/>
+										{((i === 0)) && 
+											<AddCard title={elems.title} data = {data} addDataBase={addDataBase}/>
+										}
+										{((i > 0) && (data[i - 1].issues.length > 0)) && 
+											<AddCard title={elems.title} data = {data} addDataBase={addDataBase}/>
+										}
 									</div>
 									
 								)
 						})}
-						<LocalClear/>
 					</div>
 				} />
 				{data.map((elems) =>{
 					return (
 						elems.issues.map((elem) => {
-							console.log("/" + elem.id)
 							return (<Route path={"/tasks/" + elem.id} element={ <TaskWindow data={elem} handleClickUpdate={handleClickUpdate}/> }/>)
 						})
 					)	

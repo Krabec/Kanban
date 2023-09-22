@@ -9,6 +9,7 @@
 }
 .window {
 	position: absolute;
+	z-index: 100;
 }
 
 .window-li {
@@ -28,15 +29,12 @@
 	width: 134px;
 	background-color: white;
 	margin-top: -11px;
+	z-index: 100;
 }
 
 .window-li li {
 	padding-bottom: 0;
 	margin-bottom: 0;
-}
-
-.window-li a:hover{
-	text-decoration: underline;
 }
 
 .avatar {

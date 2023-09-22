@@ -17,3 +17,18 @@ footer {
 	text-align: left;
 
 }
+
+.info-tasks {
+    display: flex;
+    margin-right: 36px;
+}
+
+.info-tasks div {
+    margin-right: 36px;
+}
+
+@media screen and (max-width: 890px) {
+	.kanban-board{
+		display: none;
+	}
+}

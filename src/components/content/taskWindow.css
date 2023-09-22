@@ -4,14 +4,21 @@
     flex-direction: row;
     justify-content: space-between;
     background-color: white;
-    min-width: 98%;
+    min-width: 98vw;
     min-height: 100%;
     margin: 0 15px 0 15px;
     border-radius: 7px;
 }
 
 .info-task {
+    display: flex;
+    flex-direction: column;
     margin: 30px;
+    min-width: 90%;
+}
+
+textarea {
+    margin-bottom: 15px;
 }
 
 .link {
@@ -19,6 +26,37 @@
     margin-top: 20px;
 }
 
-.info-task input {
+.info-task textarea {
+    resize: none;
     border: none;
+    min-width: 90%;
+    min-height: 90%;
+}
+
+.info-task button {
+    align-self: flex-end;
+}
+
+@media screen and (max-width: 950px) {
+	.info-task {
+        min-width: 70%;
+        padding-bottom: 35px;
+    }
+
+    .task-window {
+        position: absolute;
+        padding-bottom: 15px;
+        min-height: 95%;
+        min-width: 90%;
+    }
+    .link {
+        max-width: 20%;
+    }
+
+    .link svg {
+        width: 15px;
+    }
+    .main {
+        min-width: 0;
+    }
 }

@@ -10,8 +10,6 @@ function App() {
 	const [finishedtasks, setFinishedtasks] = useState(0)
 
 	function countTask (active, finished) {
-		console.log(active)
-		console.log(finished)
 		setActiveTask(active)
 		setFinishedtasks(finished)
 	}

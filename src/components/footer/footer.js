@@ -4,8 +4,11 @@ import './footer.css';
 function Footer({activeTask, finishedtasks}) {
 	return(
 		<footer>
-			<div>Active tasks: {activeTask} Finished tasks: {finishedtasks}</div>
-			<div>Profile</div>
+			<div className="info-tasks">
+				<div>Active tasks: {activeTask}</div>
+				<div>Finished tasks: {finishedtasks}</div>
+			</div>
+			<div className="kanban-board">Kanban board by Ivan Krabec</div>
 		</footer>
 	)
 }
